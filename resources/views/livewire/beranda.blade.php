@@ -28,7 +28,9 @@
         </div>
 
         {{-- card --}}
-        <div class="flex items-center gap-5 flex-wrap">
+        <div class="flex items-center justify-center gap-5 flex-wrap">
+            @include('livewire.partials._card-booking', ['image' => asset('assets/image1.jpeg'), 'title' => 'Mutiara Hitam', 'address' => 'Jln. Ardipura III, Polimak I', 'price' => 'Rp 250.000', 'rating' => '4.5'])
+            @include('livewire.partials._card-booking', ['image' => asset('assets/image1.jpeg'), 'title' => 'Mutiara Hitam', 'address' => 'Jln. Ardipura III, Polimak I', 'price' => 'Rp 250.000', 'rating' => '4.5'])
             @include('livewire.partials._card-booking', ['image' => asset('assets/image1.jpeg'), 'title' => 'Mutiara Hitam', 'address' => 'Jln. Ardipura III, Polimak I', 'price' => 'Rp 250.000', 'rating' => '4.5'])
             @include('livewire.partials._card-booking', ['image' => asset('assets/image1.jpeg'), 'title' => 'Mutiara Hitam', 'address' => 'Jln. Ardipura III, Polimak I', 'price' => 'Rp 250.000', 'rating' => '4.5'])
             @include('livewire.partials._card-booking', ['image' => asset('assets/image1.jpeg'), 'title' => 'Mutiara Hitam', 'address' => 'Jln. Ardipura III, Polimak I', 'price' => 'Rp 250.000', 'rating' => '4.5'])

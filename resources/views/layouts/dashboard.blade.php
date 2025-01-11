@@ -25,9 +25,14 @@
                 <div class="flex items-center justify-between py-6">
                     <img class="w-[190px] h-[70px]" src="{{asset('assets/logo.png')}}" alt="">
                     <div class="flex items-center gap-4">
-                        <a href="{{route('beranda')}}" class="text-north-star-blue text-sm font-bold hover:text-north-star-blue">Beranda</a>
-                        <a href="" class="text-black-mana text-sm font-medium hover:text-north-star-blue hover:font-bold">Event</a>
-                        <a href="{{route('history')}}" class="text-black-mana text-sm font-medium hover:text-north-star-blue hover:font-bold">Riwayat</a>
+                        @php
+                            $currentRoute = Route::currentRouteName();
+                            $active = 'font-bold text-north-star-blue';
+                            $inactive = 'font-medium text-black-mana';
+                        @endphp
+                        <a href="{{route('beranda')}}" class="{{$currentRoute === 'beranda' ?  $active : $inactive}} text-sm hover:text-north-star-blue">Beranda</a>
+                        <a href="{{route('event')}}" class="{{$currentRoute === 'event' ?  $active : $inactive}} text-sm hover:text-north-star-blue hover:font-bold">Event</a>
+                        <a href="{{route('history')}}" class="{{$currentRoute === 'history' ?  $active : $inactive}} text-sm hover:text-north-star-blue hover:font-bold">Riwayat</a>
                     </div>
                     <div class="flex items-center gap-2.5">
                         <a href="" class="rounded-3xl border border-north-star-blue text-north-star-blue font-bold text-xs px-4 py-3 hover:bg-north-star-blue hover:text-white">Daftar</a>
