@@ -31,7 +31,7 @@
                     </div>
                     <div class="flex items-center gap-2.5">
                         <a href="" class="rounded-3xl border border-north-star-blue text-north-star-blue font-bold text-xs px-4 py-3 hover:bg-north-star-blue hover:text-white">Daftar</a>
-                        <a href="" class="rounded-3xl border border-north-star-blue text-north-star-blue font-bold text-xs px-4 py-3 hover:bg-north-star-blue hover:text-white">Login</a>
+                        <a href="{{route('login')}}" class="rounded-3xl border border-north-star-blue text-north-star-blue font-bold text-xs px-4 py-3 hover:bg-north-star-blue hover:text-white">Login</a>
                     </div>
                 </div>
                 

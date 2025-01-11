@@ -6,7 +6,7 @@
             <input
                 type="text"
                 placeholder="Cari Lapangan"
-                class="flex-grow bg-white-smoke border-none text-gray-100 placeholder-gray-400 focus:border-none"
+                class="flex-grow bg-white-smoke border-none text-gray-100 placeholder-gray-400 focus:ring-white-smoke focus:border-white-smoke"
             />
             <button>
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,7 +16,16 @@
         </div>
 
         {{-- hero --}}
-        <img src="{{asset('assets/hero.png')}}" class="w-full" alt="">
+        <div class="bg-hero-pattern bg-cover bg-center bg-no-repeat w-full rounded-lg flex px-14 items-center space-y-2.5 justify-center">
+            <div class="max-w-[496px]">
+                <div class="text-north-star-blue text-[42px] font-bold">
+                    MUDAH <span class="text-[28px] font-normal">&</span> EFISIEN
+                </div>
+                <span class="text-[#FFB800] text-[28px] font-normal">DALAM MELAKUKAN PENYEWAAN LAPANGAN FUTSAL</span>
+                <div class="font-light text-[16px] text-[#464646]">Dengan melakukan penyewaan lapangan futsal secara online, anda dapat melakukannya dimanapun dan kapanpun.</div>
+            </div>
+            <img src="{{asset('assets/timnas.png')}}" alt="">
+        </div>
 
         {{-- card --}}
         <div class="flex items-center gap-5 flex-wrap">

@@ -18,6 +18,9 @@ export default {
             fontFamily: {
                 sans: ['Inter', 'Figtree', ...defaultTheme.fontFamily.sans],
             },
+            backgroundImage: {
+                'hero-pattern': "url('/public/assets/hero-bg.jpeg')",
+              }
         },
         colors: {
             'north-star-blue': '#1F3E97',
