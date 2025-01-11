@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\RegisterController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -10,6 +11,8 @@ use App\Http\Controllers\BookingController;
 
 Route::get('/', [BerandaController::class, 'index'])->name('beranda');
 Route::get('/booking', [BookingController::class, 'index'])->name('booking');
+Route::get('/register-admin', [RegisterController::class, 'registerAdmin'])->name('register-admin');
+Route::get('/register-customer', [RegisterController::class, 'registerCustomer'])->name('register-customer');
 
 Route::middleware([
     'auth:sanctum',
