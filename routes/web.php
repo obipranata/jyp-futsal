@@ -5,6 +5,7 @@ use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\HistoryController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -15,6 +16,7 @@ Route::get('/booking', [BookingController::class, 'index'])->name('booking');
 Route::get('/register-admin', [RegisterController::class, 'registerAdmin'])->name('register-admin');
 Route::get('/register-customer', [RegisterController::class, 'registerCustomer'])->name('register-customer');
 Route::get('/event', [EventController::class, 'index'])->name('event');
+Route::get('/history', [HistoryController::class, 'index'])->name('history');
 
 Route::middleware([
     'auth:sanctum',
