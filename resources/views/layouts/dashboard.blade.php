@@ -20,7 +20,7 @@
     </head>
     <body>
         <div class="h-screen" x-data="{ openRegister: false }">
-            <div class="container space-y-20 pb-20">
+            <div class="container space-y-8 pb-20">
                 {{-- Nav --}}
                 <div class="flex items-center justify-between py-6">
                     <img class="w-[190px] h-[70px]" src="{{asset('assets/logo.png')}}" alt="">

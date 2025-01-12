@@ -1,6 +1,6 @@
 <div class="mx-auto lg:max-w-[700px] space-y-5">
     <div class="pb-5 border-b-2 border-[#D9D9D9]">
-        <h1 class="capitalize text-[32px] text-[#464646] font-medium text-center">Event</h1>
+        <h1 class="text-[38px] font-bold text-center">Event</h1>
     </div>
     <div class="flex gap-5 bg-olympian-blue rounded-lg !p-4">
         <div class="w-1/2">
