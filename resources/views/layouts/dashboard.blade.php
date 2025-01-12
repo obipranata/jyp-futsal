@@ -76,7 +76,7 @@
                             <div class="flex justify-center items-center gap-5">
                                 <a href="{{route('register-customer')}}">
                                     <div class="py-5 px-[26px] flex flex-col justify-center items-center border border-white hover:bg-north-star-blue hover:border-none rounded-lg gap-2.5">
-                                        <img src="{{asset('assets/soccer-player.png')}}" class="max-w-[50px] mx-auto" alt="">
+                                        <img src="{{asset('assets/soccer-player.png')}}" class="max-w-[50px] ml-5" alt="">
                                         <span class="text-white">Penyewa</span>
                                     </div>
                                 </a>
