@@ -36,6 +36,7 @@ export default {
             'blue-blue' : '#263AD1',
             'orange' : '#FFB800',
             'orange-800' : '#FF632F',
+            'black' : '#000000',
         }
     },
 

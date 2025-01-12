@@ -3,7 +3,7 @@
         <div class="flex gap-7 items-center border-b border-[#D9D9D9] pb-10 w-full">
             <img src="{{asset('assets/github-logo.png')}}" class="object-cover w-[120px] h-[120px] rounded-full" alt="">
             <div class="space-y-1">
-                <h2 class="text-[40px] font-semibold">Mutiara Hitam</h2>
+            <h2 class="text-[40px] font-semibold">Mutiara Hitam</h2>
                 <div class="text-xl font-medium text-fiftieth-shade">
                     <div>jln. Adipura III, Polimak I</div>
                     <div>+6281244663322</div>

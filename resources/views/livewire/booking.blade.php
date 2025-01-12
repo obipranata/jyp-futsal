@@ -140,7 +140,7 @@
                     <h2 class="text-2xl font-medium">Harga Total</h2>
                     <h3 class="text-north-star-blue text-[32px] font-bold">Rp 250.000</h3>
                 </div>
-                <button class="bg-north-star-blue text-white py-5 w-full rounded-lg text-[28px] font-bold">Booking Sekarang</button>
+                <a href="{{route('informasi-pembayaran')}}" class="bg-north-star-blue text-white py-5 w-full rounded-lg text-[28px] font-bold block text-center">Booking Sekarang</a>
             </div>
         </div>
     </div>
