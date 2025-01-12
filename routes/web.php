@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\BookingDetailController;
+use App\Http\Controllers\booking\PembayaranController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -19,6 +20,8 @@ Route::get('/register-customer', [RegisterController::class, 'registerCustomer']
 Route::get('/event', [EventController::class, 'index'])->name('event');
 Route::get('/history', [HistoryController::class, 'index'])->name('history');
 Route::get('/booking-detail', [BookingDetailController::class, 'index'])->name('booking-detail');
+Route::get('/booking/informasi-pembayaran', [PembayaranController::class, 'informasiPembayaran'])->name('informasi-pembayaran');
+Route::get('/booking/konfirmasi-pembayaran', [PembayaranController::class, 'konfirmasiPembayaran'])->name('konfirmasi-pembayaran');
 
 Route::middleware([
     'auth:sanctum',

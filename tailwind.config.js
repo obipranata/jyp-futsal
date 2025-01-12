@@ -33,7 +33,9 @@ export default {
             'fiftieth-shade' : '#515151',
             'titanium-white' : '#E5E5E5',
             'gainsboro' : '#D9D9D9',
-            'blue-blue' : '#263AD1'
+            'blue-blue' : '#263AD1',
+            'orange' : '#FFB800',
+            'orange-800' : '#FF632F',
         }
     },
 
