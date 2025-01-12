@@ -13,6 +13,9 @@ export default {
     theme: {
         container: {
             center: true,
+            screens: {
+                xl: "1133px",
+            },
         },
         extend: {
             fontFamily: {
