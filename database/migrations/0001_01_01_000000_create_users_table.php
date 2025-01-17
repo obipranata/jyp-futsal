@@ -13,13 +13,19 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('email')->unique();
+            $table->string('nama');
+            $table->string('no_hp')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('kecamatan')->nullable();
+            $table->string('kota')->nullable();
+            $table->enum('level', ['admin lapangan', 'super admin', 'penyewa'])->default('penyewa');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
+            $table->string('surat_izin_bangunan')->nullable();
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
 

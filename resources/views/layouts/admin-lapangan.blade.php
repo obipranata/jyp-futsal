@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Admin</title>
+    <title>Admin Futsal</title>
     <meta name="author" content="David Grzyb">
     <meta name="description" content="">
 
@@ -29,20 +29,20 @@
 
     <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
         <div class="p-6">
-            <a href="{{route('super-admin.index')}}" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
+            <a href="{{route('admin-lapangan.index')}}" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
         </div>
         <nav class="text-white text-base font-semibold pt-3">
-            <a href="{{route('super-admin.index')}}" class="flex items-center {{Route::currentRouteName() === 'super-admin.index' ? 'active-nav-link' : ''}} text-white py-4 pl-6 nav-item">
+            <a href="{{route('admin-lapangan.index')}}" class="flex items-center {{Route::currentRouteName() === 'admin-lapangan.index' ? 'active-nav-link' : ''}} text-white py-4 pl-6 nav-item">
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Dashboard
             </a>
-            <a href="{{route('super-admin.data-tempat-penyewaan')}}" class="flex items-center {{Route::currentRouteName() === 'super-admin.data-tempat-penyewaan' ? 'active-nav-link' : ''}} text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="{{route('admin-lapangan.penyewaan')}}" class="flex items-center {{Route::currentRouteName() === 'admin-lapangan.penyewaan' ? 'active-nav-link' : ''}} text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-sticky-note mr-3"></i>
-                Data Tempat Penyewaan
+                Data Penyewaan
             </a>
-            <a href="{{route('admin-lapangan.member')}}" class="flex items-center {{Route::currentRouteName() === 'admin-lapangan.member' ? 'active-nav-link' : ''}} text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fas fa-align-left mr-3"></i>
-                Data Penyewa
+            <a href="{{route('admin-lapangan.lapangan')}}" class="flex items-center {{Route::currentRouteName() === 'admin-lapangan.lapangan' ? 'active-nav-link' : ''}} text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-table mr-3"></i>
+                Data Lapangan
             </a>
             <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-tablet-alt mr-3"></i>
@@ -77,7 +77,7 @@
         <!-- Mobile Header & Nav -->
         <header x-data="{ isOpen: false }" class="w-full bg-sidebar py-5 px-6 sm:hidden">
             <div class="flex items-center justify-between">
-                <a href="{{route('super-admin.index')}}" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
+                <a href="{{route('admin-lapangan.index')}}" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
                 <button @click="isOpen = !isOpen" class="text-white text-3xl focus:outline-none">
                     <i x-show="!isOpen" class="fas fa-bars"></i>
                     <i x-show="isOpen" class="fas fa-times"></i>
@@ -86,17 +86,21 @@
 
             <!-- Dropdown Nav -->
             <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
-                <a href="{{route('super-admin.index')}}" class="flex items-center {{Route::currentRouteName() === 'super-admin.index' ? 'active-nav-link' : ''}} text-white py-2 pl-4 nav-item">
+                <a href="{{route('admin-lapangan.index')}}" class="flex items-center {{Route::currentRouteName() === 'admin-lapangan.index' ? 'active-nav-link' : ''}} text-white py-2 pl-4 nav-item">
                     <i class="fas fa-tachometer-alt mr-3"></i>
                     Dashboard
                 </a>
-                <a href="{{route('super-admin.data-tempat-penyewaan')}}" class="flex items-center {{Route::currentRouteName() === 'super-admin.data-tempat-penyewaan' ? 'active-nav-link' : ''}} text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                <a href="{{route('admin-lapangan.penyewaan')}}" class="flex items-center {{Route::currentRouteName() === 'admin-lapangan.penyewaan' ? 'active-nav-link' : ''}} text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-sticky-note mr-3"></i>
-                    Data Tempat Penyewaan
+                    Data Penyewaan
+                </a>
+                <a href="{{route('admin-lapangan.lapangan')}}" class="flex items-center {{Route::currentRouteName() === 'admin-lapangan.lapangan' ? 'active-nav-link' : ''}} text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fas fa-table mr-3"></i>
+                    Data Lapangan
                 </a>
                 <a href="{{route('admin-lapangan.member')}}" class="flex items-center {{Route::currentRouteName() === 'admin-lapangan.member' ? 'active-nav-link' : ''}} text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-align-left mr-3"></i>
-                    Data Penyewa
+                    Data Member
                 </a>
                 <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-tablet-alt mr-3"></i>
@@ -132,5 +136,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 
     @livewireScripts
+    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 </body>
 </html>

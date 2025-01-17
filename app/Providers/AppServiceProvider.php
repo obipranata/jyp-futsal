@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Blade::directive('initials', function ($expression) {
+            return "<?php
+                \$name = trim($expression);
+                \$words = explode(' ', \$name);
+                \$firstChar = strtoupper(\$words[0][0] ?? '');
+                \$lastChar = strtoupper(\$words[count(\$words) - 1][-1] ?? '');
+                echo \$firstChar . \$lastChar;
+            ?>";
+        });
     }
 }
