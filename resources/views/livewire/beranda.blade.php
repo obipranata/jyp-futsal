@@ -1,6 +1,14 @@
 <div>
    <div class="space-y-7">
-
+        @if ($this->penyewaan->isNotEmpty())
+            <div class="h-[44px] w-full bg-[#FFB800] text-lg font-semibold flex items-center justify-center gap-2.5 rounded-lg">
+                <span class="text-black">Waktu bermain anda</span>
+                @foreach ($this->penyewaan as $item)
+                    <span class="text-[#FF2929]">{{ \Illuminate\Support\Carbon::parse($item->tanggal_main)->format('Y-m-d')}}, {{$item->waktu_main}}</span>
+                @endforeach
+                <a href="" class="text-[#414141] text-[8px] underline">Lihat disini.</a>
+            </div>
+        @endif
         {{-- pencarian --}}
         <div class="flex items-center bg-white-smoke w-1/2 mx-auto rounded-full px-4 py-2 shadow-sm">
             <input
@@ -28,15 +36,17 @@
         </div>
 
         {{-- card --}}
-        <div class="flex items-center justify-center gap-5 flex-wrap">
-            @include('livewire.partials._card-booking', ['image' => asset('assets/image1.jpeg'), 'title' => 'Mutiara Hitam', 'address' => 'Jln. Ardipura III, Polimak I', 'price' => 'Rp 250.000', 'rating' => '4.5'])
-            @include('livewire.partials._card-booking', ['image' => asset('assets/image1.jpeg'), 'title' => 'Mutiara Hitam', 'address' => 'Jln. Ardipura III, Polimak I', 'price' => 'Rp 250.000', 'rating' => '4.5'])
-            @include('livewire.partials._card-booking', ['image' => asset('assets/image1.jpeg'), 'title' => 'Mutiara Hitam', 'address' => 'Jln. Ardipura III, Polimak I', 'price' => 'Rp 250.000', 'rating' => '4.5'])
-            @include('livewire.partials._card-booking', ['image' => asset('assets/image1.jpeg'), 'title' => 'Mutiara Hitam', 'address' => 'Jln. Ardipura III, Polimak I', 'price' => 'Rp 250.000', 'rating' => '4.5'])
-            @include('livewire.partials._card-booking', ['image' => asset('assets/image1.jpeg'), 'title' => 'Mutiara Hitam', 'address' => 'Jln. Ardipura III, Polimak I', 'price' => 'Rp 250.000', 'rating' => '4.5'])
-            @include('livewire.partials._card-booking', ['image' => asset('assets/image1.jpeg'), 'title' => 'Mutiara Hitam', 'address' => 'Jln. Ardipura III, Polimak I', 'price' => 'Rp 250.000', 'rating' => '4.5'])
-            @include('livewire.partials._card-booking', ['image' => asset('assets/image1.jpeg'), 'title' => 'Mutiara Hitam', 'address' => 'Jln. Ardipura III, Polimak I', 'price' => 'Rp 250.000', 'rating' => '4.5'])
-            @include('livewire.partials._card-booking', ['image' => asset('assets/image1.jpeg'), 'title' => 'Mutiara Hitam', 'address' => 'Jln. Ardipura III, Polimak I', 'price' => 'Rp 250.000', 'rating' => '4.5'])
+        <div class="flex {{count($dataLapangan) > 3 ? 'justify-center': 'justify-start'}} items-center gap-5 flex-wrap">
+            @foreach ($dataLapangan as $item)
+                @include('livewire.partials._card-booking', [
+                    'userId' => $item->user_id,
+                    'image' => asset($item->foto), 
+                    'title' => $item->user?->nama, 
+                    'address' => $item->user?->alamat.', '.$item->user?->kecamatan.', '.$item->user?->kota, 
+                    'price' => 'Rp '.number_format($item->harga), 
+                    'rating' => '4.5'
+                ])
+            @endforeach
         </div>
    </div>
 </div>

@@ -30,14 +30,38 @@
                             $active = 'font-bold text-north-star-blue';
                             $inactive = 'font-medium text-black-mana';
                         @endphp
-                        <a href="{{route('beranda')}}" class="{{$currentRoute === 'beranda' ?  $active : $inactive}} text-sm hover:text-north-star-blue">Beranda</a>
-                        <a href="{{route('event')}}" class="{{$currentRoute === 'event' ?  $active : $inactive}} text-sm hover:text-north-star-blue hover:font-bold">Event</a>
-                        <a href="{{route('history')}}" class="{{$currentRoute === 'history' ?  $active : $inactive}} text-sm hover:text-north-star-blue hover:font-bold">Riwayat</a>
+                        <a href="{{route('beranda')}}" class="{{$currentRoute === 'beranda' ?  $active : $inactive}} text-sm hover:text-north-star-blue w-[60px] text-center">Beranda</a>
+                        <a href="{{route('event')}}" class="{{$currentRoute === 'event' ?  $active : $inactive}} text-sm hover:text-north-star-blue hover:font-bold w-[60px] text-center">Event</a>
+                        <a href="{{route('history')}}" class="{{$currentRoute === 'history' ?  $active : $inactive}} text-sm hover:text-north-star-blue hover:font-bold w-[60px] text-center">Riwayat</a>
                     </div>
-                    <div class="flex items-center gap-2.5">
-                        <button @click="openRegister = !openRegister" class="rounded-3xl border border-north-star-blue text-north-star-blue font-bold text-xs px-4 py-3 hover:bg-north-star-blue hover:text-white">Daftar</button>
-                        <a href="{{route('login')}}" class="rounded-3xl border border-north-star-blue text-north-star-blue font-bold text-xs px-4 py-3 hover:bg-north-star-blue hover:text-white">Login</a>
-                    </div>
+                    @auth
+                        @php
+                            $backgroundColor = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+                        @endphp
+                        <div class="relative" x-data="{isOpen : false}" x-cloak @click.away="isOpen=false">
+                            <div class="flex gap-2.5 items-center cursor-pointer" @click="isOpen = !isOpen">
+                                <div class="w-8 h-8 flex items-center justify-center rounded-full text-sm font-medium   " style="background-color: {{$backgroundColor}}">
+                                    @initials(auth()->user()->nama)
+                                </div>
+                                <div class="text-north-star-blue">
+                                    Hello, <span class="font-bold">{{auth()->user()->nama}}</span>
+                                </div>
+                            </div>
+                            <div x-show="isOpen" class="w-[200px] bg-gray-600 absolute -bottom-14 rounded-lg px-4 py-2.5">
+                                <form method="POST" action="{{ route('logout') }}" x-data>
+                                    @csrf
+                                    <a href="{{ route('logout') }}" @click.prevent="$root.submit();" class="block text-center text-sm font-bold text-white hover:text-titanium-white">
+                                        Keluar
+                                    </a>
+                                  </form>
+                            </div>
+                        </div>
+                    @else
+                        <div class="flex items-center gap-2.5">
+                            <button @click="openRegister = !openRegister" class="rounded-3xl border border-north-star-blue text-north-star-blue font-bold text-xs px-4 py-3 hover:bg-north-star-blue hover:text-white">Daftar</button>
+                            <a href="{{route('login')}}" class="rounded-3xl border border-north-star-blue text-north-star-blue font-bold text-xs px-4 py-3 hover:bg-north-star-blue hover:text-white">Login</a>
+                        </div>
+                    @endauth
                 </div>
 
                     <!-- Modal -->
@@ -97,7 +121,7 @@
             </div>
             
             {{-- Footer --}}
-            <footer class="bg-olympian-blue text-white text-sm text-center py-4 fixed bottom-0 w-full">
+            <footer class="bg-olympian-blue text-white text-sm text-center py-4 w-full">
                 Copyright 2025. All Right Reserverd
             </footer>
         </div>

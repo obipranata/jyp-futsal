@@ -1,3 +1,3 @@
 <x-dashboard-layout>
-  <livewire:booking />
+  <livewire:booking :id="$id"/>
 </x-dashboard-layout>

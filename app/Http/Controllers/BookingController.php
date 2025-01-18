@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        return view('booking');
+        return view('booking', ['id' =>  $id]);
     }
 }

@@ -12,8 +12,8 @@ class PembayaranController extends Controller
         return view('booking.infomasi-pembayaran');
     }
 
-    public function konfirmasiPembayaran()
+    public function konfirmasiPembayaran($virtualAccount)
     {
-        return view('booking.konfirmasi-pembayaran');
+        return view('booking.konfirmasi-pembayaran', ['virtual_account' => $virtualAccount]);
     }
 }

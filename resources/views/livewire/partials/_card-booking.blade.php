@@ -20,6 +20,6 @@
           </svg>
           {{$rating}}/5
       </div>
-      <a href="{{route('booking')}}" class="bg-north-star-blue text-sm text-white py-2.5 px-3 rounded-[50px]">Booking</a>
+      <a href="{{route('booking', $userId)}}" class="bg-north-star-blue text-sm text-white py-2.5 px-3 rounded-[50px]">Booking</a>
   </div>
 </div>

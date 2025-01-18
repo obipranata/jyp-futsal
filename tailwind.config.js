@@ -43,7 +43,6 @@ export default {
             'north-star-blue': '#1F3E97',
             'black-mana': '#858585',
             'olympian-blue': '#18378F',
-            'white': '#FFFFFF',
             'white-smoke': '#F4F4F4',
             'mithril-color' : '#878787',
             'brilliant-licorice' : '#525252',

@@ -13,13 +13,17 @@ return new class extends Migration
     {
         Schema::create('penyewaans', function (Blueprint $table) {
             $table->id();
+            $table->string('pembayaran_id');
             $table->bigInteger('lapangan_id');
             $table->bigInteger('user_id');
-            $table->bigInteger('jadwal_id');
-            $table->dateTime('tanggal_main');
+            $table->time('waktu_main');
+            $table->date('tanggal_main');
             $table->string('metode_pembayaran');
-            $table->string('link_bayar');
-            $table->enum('status', ['menunggu pembayaran', 'bayar DP', 'lunas', 'batal'])->default('menunggu pembayaran');
+            $table->string('no_pembayaran');
+            $table->string('status');
+            $table->enum('tipe_pembayaran', ['dp', 'full'])->default('dp');
+            $table->bigInteger('harga_bayar');
+            $table->bigInteger('harga_full');
             $table->timestamps();
         });
     }

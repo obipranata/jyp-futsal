@@ -10,20 +10,21 @@ use App\Http\Controllers\BookingDetailController;
 use App\Http\Controllers\booking\PembayaranController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\AdminLapanganController;
+use App\Http\Controllers\PaymentController;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
+Route::post('/payments/callback', [PaymentController::class, 'handleWebhook']);
 Route::get('/', [BerandaController::class, 'index'])->name('beranda');
-Route::get('/booking', [BookingController::class, 'index'])->name('booking');
+Route::get('/booking/{id}/detail', [BookingController::class, 'index'])->name('booking');
 Route::get('/register-admin', [RegisterController::class, 'registerAdmin'])->name('register-admin');
 Route::get('/register-customer', [RegisterController::class, 'registerCustomer'])->name('register-customer');
 Route::get('/event', [EventController::class, 'index'])->name('event');
 Route::get('/history', [HistoryController::class, 'index'])->name('history');
 Route::get('/booking-detail', [BookingDetailController::class, 'index'])->name('booking-detail');
 Route::get('/booking/informasi-pembayaran', [PembayaranController::class, 'informasiPembayaran'])->name('informasi-pembayaran');
-Route::get('/booking/konfirmasi-pembayaran', [PembayaranController::class, 'konfirmasiPembayaran'])->name('konfirmasi-pembayaran');
+Route::get('/booking/{virtual_account}/konfirmasi-pembayaran', [PembayaranController::class, 'konfirmasiPembayaran'])->name('konfirmasi-pembayaran');
 
 Route::middleware([
     'auth:sanctum',
