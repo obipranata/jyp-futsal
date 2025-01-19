@@ -38,7 +38,7 @@
                     <h1 class="text-sm text-[#464646] capitalize">Total Pembayaran</h1>
                 </div>
                 <div class="text-xl text-orange-800 font-bold">
-                    Rp {{number_format($penyewaan->harga_bayar)}}
+                    Rp {{number_format($totalBayar)}}
                 </div>
             </div>
         </div>

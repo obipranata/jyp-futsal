@@ -86,7 +86,7 @@
               </svg>
               Pilih Jam
           </div>
-          <div class="flex gap-2.5 justify-center">
+          <div class="flex gap-2.5 flex-wrap justify-center">
               @foreach ($times as $time)
                   @php
                       $class = 'hover:bg-north-star-blue hover:text-white text-center cursor-pointer';
@@ -133,21 +133,23 @@
               </div>
           </div>
 
-          <div class="space-y-3">
-              <div class="flex justify-between items-center">
-                  <h2 class="text-2xl font-medium">Harga Total</h2>
-                  @if ($isDisabled)
-                    <h3 class="text-north-star-blue text-2xl font-bold">Rp 0</h3>
-                  @else
-                    <h3 class="text-north-star-blue text-2xl font-bold">Rp {{number_format($totalHarga ?? 0)}}</h3>
-                  @endif
-              </div>
-              @auth
-                <button wire:click="submitBooking" class="text-white py-2 w-full rounded-lg text-xl font-bold block text-center {{$isDisabled ? 'cursor-not-allowed bg-gray-300' : 'bg-north-star-blue cursor-pointer'}}" @disabled($isDisabled)>Booking Sekarang</button>
-              @else
-                <a href="{{route('login')}}" class="bg-north-star-blue text-white py-2 w-full rounded-lg text-xl font-bold block text-center {{$isDisabled ? 'cursor-not-allowed' : 'cursor-pointer'}}">Booking Sekarang</a>
-              @endauth
-          </div>
+          @if (!$isDisabled)
+            <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-2xl font-medium">Harga Total</h2>
+                    @if ($isDisabled)
+                      <h3 class="text-north-star-blue text-2xl font-bold">Rp 0</h3>
+                    @else
+                      <h3 class="text-north-star-blue text-2xl font-bold">Rp {{number_format($totalHarga ?? 0)}}</h3>
+                    @endif
+                </div>
+                @auth
+                  <button wire:click="submitBooking" class="text-white py-5 w-full rounded-lg text-2xl font-bold block text-center {{$isDisabled ? 'cursor-not-allowed bg-gray-300' : 'bg-north-star-blue cursor-pointer'}}" @disabled($isDisabled)>Booking Sekarang</button>
+                @else
+                  <a href="{{route('login')}}" class="bg-north-star-blue text-white py-5 w-full rounded-lg text-2xl font-bold block text-center {{$isDisabled ? 'cursor-not-allowed' : 'cursor-pointer'}}">Booking Sekarang</a>
+                @endauth
+            </div>
+          @endif
       </div>
   </div>
 </div>

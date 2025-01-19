@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Lapangan;
 use App\Models\Penyewaan;
 use App\Models\User;
 use Illuminate\Support\Carbon;
@@ -14,7 +15,7 @@ class Booking extends Component
 {
 
     public $bookingTimes = [];
-    public $times = ['08:00:00', '09:00:00', '10:00:00', '11:00:00', '12:00:00', '13:00:00', '14:00:00', '15:00:00', '16:00:00', '17:00:00'];
+    public $times = ['08:00:00', '09:00:00', '10:00:00', '11:00:00', '12:00:00', '13:00:00', '14:00:00', '15:00:00', '16:00:00', '17:00:00', '18:00:00', '19:00:00', '20:00:00', '21:00:00', '22:00:00', '23:00:00'];
     public $booked = ['08:00:00', '10:00:00', '11:00:00'];
     public $user;
     public $penyewa;
@@ -89,6 +90,7 @@ class Booking extends Component
     {
         try{
             $expirationDate = now()->addMinutes(30)->toIso8601String();
+            $lapangan = Lapangan::find($this->lapanganId);
             $response = Http::withBasicAuth(env('XENDIT_SECRET_KEY'), '')
             ->post('https://api.xendit.co/callback_virtual_accounts', [
                 'external_id' => (string)time(),
@@ -113,8 +115,8 @@ class Booking extends Component
                         'no_pembayaran' => $data['external_id'],
                         'status' => $data['status'],
                         'tipe_pembayaran' => $this->kategoriPembayaran,
-                        'harga_bayar' => $this->totalBayar,
-                        'harga_full' => $this->totalHarga
+                        'harga_bayar' => $this->kategoriPembayaran === 'dp' ? $this->totalBayar : $lapangan->harga,
+                        'harga_full' => $lapangan->harga
                     ]);
                 }
             }

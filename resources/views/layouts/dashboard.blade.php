@@ -19,7 +19,7 @@
         @livewireStyles
     </head>
     <body>
-        <div class="h-screen" x-data="{ openRegister: false }">
+        <div class="h-screen flex flex-col justify-between" x-data="{ openRegister: false }">
             <div class="container space-y-8 pb-20">
                 {{-- Nav --}}
                 <div class="flex items-center justify-between py-6">
