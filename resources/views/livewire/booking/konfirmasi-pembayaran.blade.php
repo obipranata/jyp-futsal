@@ -1,11 +1,8 @@
 <div class="space-y-8">
-    <x-marquee-text
-        marqueeClass="p-2 rounded bg-orange"
-        classTextInfo="text-lg text-white font-semibold"
-        classDate="text-sm text-orange-800 font-medium"
-        textInfo="lakukan pembayaran sebelum"
-        dateInfo="Rabu, 14 Januari 2025, 08.00"
-    />
+    <div class="h-[44px] w-full bg-[#FFB800] text-lg font-semibold flex items-center justify-center gap-2.5 rounded-lg">
+        <span class="text-black">Lakukan Pembayaran Sebelum</span>
+        <span class="text-[#FF2929]">{{ \Illuminate\Support\Carbon::parse($penyewaan->created_at)->addMinutes(30)->format('F j, Y g:i A')}}</span>
+    </div>
     <div class="pb-5 border-b-2 border-[#D9D9D9]">
         <h1 class="capitalize text-[32px] text-[#464646] font-medium">Konfirmasi Pembayaran</h1>
     </div>
@@ -20,14 +17,14 @@
                     <h1 class=" text-[#464646] uppercase">{{$penyewaan->metode_pembayaran   }}</h1>
                 </div>
                 <div class="">
-                    <img
+                    {{-- <img
                         src="{{ asset('assets/bri-logo.png') }}"
                         alt=""
                         class="w-16 object-center object-fill"
-                    >
+                    > --}}
                 </div>
             </div>
-            <div class="flex justify-between border-b border-[#D9D9D9] p-4 items-center">
+            <div class="flex justify-between border-b border-[#D9D9D9] p-4 items-center" x-data>
                 <div class="space-y-2">
                     <h1 class="text-sm text-black-mana capitalize">Nomor Virtual Account</h1>
                     <h1 class="text-[#464646] uppercase">{{$penyewaan->no_pembayaran}}</h1>

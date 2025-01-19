@@ -11,6 +11,7 @@ use App\Http\Controllers\booking\PembayaranController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\AdminLapanganController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PDFController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -25,6 +26,8 @@ Route::get('/history', [HistoryController::class, 'index'])->name('history');
 Route::get('/booking-detail', [BookingDetailController::class, 'index'])->name('booking-detail');
 Route::get('/booking/informasi-pembayaran', [PembayaranController::class, 'informasiPembayaran'])->name('informasi-pembayaran');
 Route::get('/booking/{virtual_account}/konfirmasi-pembayaran', [PembayaranController::class, 'konfirmasiPembayaran'])->name('konfirmasi-pembayaran');
+
+Route::get('generate-pdf', [PDFController::class, 'generatePDF'])->name('laporan-pdf');
 
 Route::middleware([
     'auth:sanctum',
@@ -54,6 +57,10 @@ Route::middleware([
 ->group(function () {
     Route::get('/' , [SuperAdminController::class, 'index'])->name('index');
     Route::get('/data-tempat-penyewaan' , [SuperAdminController::class, 'dataTempatPenyewaan'])->name('data-tempat-penyewaan');
+    Route::get('/event' , [SuperAdminController::class, 'event'])->name('event');
+    Route::get('/tambah-event' , [SuperAdminController::class, 'tambahEvent'])->name('tambah-event');
+    Route::get('/edit-event/{id}' , [SuperAdminController::class, 'editEvent'])->name('edit-event');
+    Route::get('/laporan' , [SuperAdminController::class, 'laporan'])->name('laporan');
 });
 
 Route::middleware([

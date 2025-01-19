@@ -29,7 +29,7 @@
 
     <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
         <div class="p-6">
-            <a href="{{route('admin-lapangan.index')}}" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
+            <a href="{{route('admin-lapangan.index')}}" class="text-white text-lg font-semibold uppercase hover:text-gray-300">{{auth()->user()->nama}}</a>
         </div>
         <nav class="text-white text-base font-semibold pt-3">
             <a href="{{route('admin-lapangan.index')}}" class="flex items-center {{Route::currentRouteName() === 'admin-lapangan.index' ? 'active-nav-link' : ''}} text-white py-4 pl-6 nav-item">
@@ -43,14 +43,6 @@
             <a href="{{route('admin-lapangan.lapangan')}}" class="flex items-center {{Route::currentRouteName() === 'admin-lapangan.lapangan' ? 'active-nav-link' : ''}} text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-table mr-3"></i>
                 Data Lapangan
-            </a>
-            <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fas fa-tablet-alt mr-3"></i>
-                Laporan
-            </a>
-            <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fas fa-calendar mr-3"></i>
-                Profil
             </a>
         </nav>
     </aside>
@@ -97,18 +89,6 @@
                 <a href="{{route('admin-lapangan.lapangan')}}" class="flex items-center {{Route::currentRouteName() === 'admin-lapangan.lapangan' ? 'active-nav-link' : ''}} text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-table mr-3"></i>
                     Data Lapangan
-                </a>
-                <a href="{{route('admin-lapangan.member')}}" class="flex items-center {{Route::currentRouteName() === 'admin-lapangan.member' ? 'active-nav-link' : ''}} text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-align-left mr-3"></i>
-                    Data Member
-                </a>
-                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-tablet-alt mr-3"></i>
-                    Laporan
-                </a>
-                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-calendar mr-3"></i>
-                    Profil
                 </a>
 
                 <form method="POST" action="{{ route('logout') }}" x-data>

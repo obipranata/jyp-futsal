@@ -12,4 +12,9 @@ class Lapangan extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function penyewaan()
+    {
+        return $this->hasMany(Penyewaan::class);
+    }
 }

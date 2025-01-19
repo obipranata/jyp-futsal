@@ -14,15 +14,15 @@ class Booking extends Component
 {
 
     public $bookingTimes = [];
-    public $times = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
-    public $booked = ['08:00', '10:00', '11:00'];
+    public $times = ['08:00:00', '09:00:00', '10:00:00', '11:00:00', '12:00:00', '13:00:00', '14:00:00', '15:00:00', '16:00:00', '17:00:00'];
+    public $booked = ['08:00:00', '10:00:00', '11:00:00'];
     public $user;
     public $penyewa;
     public $lapangan;
     public $lapanganId = null;
     public $harga = null;
     public $totalHarga = null;
-    public $tanggalMain;
+    public $tanggalMain = null;
     public $detailPenyewaan = [];
     public string $namaLapangan = '';
     public string $tanggalLengkap = '';
@@ -31,6 +31,7 @@ class Booking extends Component
     public string $virtualAccount = 'MANDIRI';
 
     public bool $isSubmitBooking = false;
+    public $isDisabled = true;
 
     public function mount($id): void
     {
@@ -57,6 +58,7 @@ class Booking extends Component
     {
         $this->tanggalMain = Carbon::parse($tanggal)->format('Y-m-d');
         $this->tanggalLengkap = $tanggalLengkap;
+        $this->bookingTimes = [];
     }
 
     public function selectedLapangan($id, $harga, $namaLapangan): void
@@ -65,6 +67,7 @@ class Booking extends Component
         $this->harga = $harga;
         $this->totalHarga = $this->harga * count($this->bookingTimes);
         $this->namaLapangan = $namaLapangan;
+        $this->bookingTimes = [];
     }
 
     public function submitBooking(): void
@@ -125,8 +128,28 @@ class Booking extends Component
         }
     }
 
+    public function queryBooked()
+    {
+        if((count($this->bookingTimes) > 0) && $this->tanggalMain && $this->lapanganId)
+        {
+            $this->isDisabled = false;
+        } else {
+            $this->isDisabled = true;
+        }
+        Penyewaan::where('tanggal_main', $this->tanggalMain)
+            ->where('lapangan_id', $this->lapanganId)
+            ->where('status', 'PENDING')
+            ->where('updated_at', '<', now()->subMinutes(30))->update(['status' => 'EXPIRED']);
+        $this->booked = Penyewaan::where('tanggal_main', $this->tanggalMain)
+            ->where('lapangan_id', $this->lapanganId)
+            ->whereIn('status', ['PENDING', 'PAID'])
+            ->pluck('waktu_main')
+            ->toArray();
+    }
+
     public function render()
     {
+        $this->queryBooked();
         return view('livewire.booking');
     }
 }

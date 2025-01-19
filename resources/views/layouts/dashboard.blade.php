@@ -99,13 +99,13 @@
                             <h2 class="text-white text-center text-2xl">Daftarkan Akun</h2>
                             <div class="flex justify-center items-center gap-5">
                                 <a href="{{route('register-customer')}}">
-                                    <div class="py-5 px-[26px] flex flex-col justify-center items-center border border-white hover:bg-north-star-blue hover:border-none rounded-lg gap-2.5">
+                                    <div class="py-5 px-[26px] w-[120px] flex flex-col justify-center items-center border border-white hover:bg-north-star-blue hover:border-none rounded-lg gap-2.5">
                                         <img src="{{asset('assets/soccer-player.png')}}" class="max-w-[50px] ml-5" alt="">
                                         <span class="text-white">Penyewa</span>
                                     </div>
                                 </a>
                                 <a href="{{route('register-admin')}}">
-                                    <div class="py-5 px-[26px] flex flex-col justify-center items-center border border-white hover:bg-north-star-blue hover:border-none rounded-lg gap-2.5">
+                                    <div class="py-5 px-[26px] w-[120px] flex flex-col justify-center items-center border border-white hover:bg-north-star-blue hover:border-none rounded-lg gap-2.5">
                                         <img src="{{asset('assets/manager.png')}}" class="max-w-[50px] mx-auto" alt="">
                                         <span class="text-white">Lapangan</span>
                                     </div>

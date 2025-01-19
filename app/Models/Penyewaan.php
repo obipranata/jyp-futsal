@@ -17,4 +17,9 @@ class Penyewaan extends Model
     {
         return $this->belongsTo(Lapangan::class);
     }
+
+    public function rating()
+    {
+        return $this->hasOne(Rating::class, 'no_pembayaran', 'no_pembayaran');
+    }
 }

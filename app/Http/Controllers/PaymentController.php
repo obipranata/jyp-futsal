@@ -24,17 +24,19 @@ class PaymentController extends Controller
             $amount = $request->input('amount'); // Paid amount
 
             // Find the payment record and update the status
-            $payment = \App\Models\Penyewaan::where('no_pembayaran', $externalId)->first();
+            $payment = \App\Models\Penyewaan::where('no_pembayaran', $externalId)->update([
+                'status' => 'PAID'
+            ]);
 
-            if ($payment) {
-                $payment->update([
-                    'status' => 'PAID'
-                ]);
+            // if ($payment) {
+            //     $payment->update([
+            //         'status' => 'PAID'
+            //     ]);
 
-                Log::info('Payment updated successfully', ['external_id' => $externalId]);
-            } else {
-                Log::warning('Payment record not found', ['external_id' => $externalId]);
-            }
+            //     Log::info('Payment updated successfully', ['external_id' => $externalId]);
+            // } else {
+            //     Log::warning('Payment record not found', ['external_id' => $externalId]);
+            // }
 
             return response()->json(['message' => 'Webhook processed successfully'], 200);
         } catch (\Exception $e) {

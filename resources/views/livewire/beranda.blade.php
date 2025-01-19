@@ -1,12 +1,10 @@
 <div>
    <div class="space-y-7">
-        @if ($this->penyewaan->isNotEmpty())
+        @if ($this->penyewaan)
             <div class="h-[44px] w-full bg-[#FFB800] text-lg font-semibold flex items-center justify-center gap-2.5 rounded-lg">
                 <span class="text-black">Waktu bermain anda</span>
-                @foreach ($this->penyewaan as $item)
-                    <span class="text-[#FF2929]">{{ \Illuminate\Support\Carbon::parse($item->tanggal_main)->format('Y-m-d')}}, {{$item->waktu_main}}</span>
-                @endforeach
-                <a href="" class="text-[#414141] text-[8px] underline">Lihat disini.</a>
+                <span class="text-[#FF2929]">{{ \Illuminate\Support\Carbon::parse($penyewaan->tanggal_main)->format('d M Y')}}, {{ \Illuminate\Support\Carbon::parse($penyewaan->waktu_main)->format('g:i A')}}</span>
+                <a href="{{route('booking-detail')}}" class="text-[#414141] text-[8px] underline">Lihat disini.</a>
             </div>
         @endif
         {{-- pencarian --}}
@@ -14,7 +12,8 @@
             <input
                 type="text"
                 placeholder="Cari Lapangan"
-                class="flex-grow bg-white-smoke border-none text-gray-100 placeholder-gray-400 focus:ring-white-smoke focus:border-white-smoke"
+                wire:model.live="search"
+                class="flex-grow bg-white-smoke border-none text-gray-800 placeholder-gray-400 focus:ring-white-smoke focus:border-white-smoke"
             />
             <button>
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -44,7 +43,7 @@
                     'title' => $item->user?->nama, 
                     'address' => $item->user?->alamat.', '.$item->user?->kecamatan.', '.$item->user?->kota, 
                     'price' => 'Rp '.number_format($item->harga), 
-                    'rating' => '4.5'
+                    'ratings' => $ratings 
                 ])
             @endforeach
         </div>

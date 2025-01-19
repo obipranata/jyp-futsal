@@ -50,13 +50,9 @@
           <div class="flex gap-2 overflow-x-auto no-scrollbar">
             <template x-for="day in daysInMonth" :key="day">
               <div 
-                  class="border border-titanium-white text-center rounded-lg cursor-pointer"
-                  :class="[
-                      `${day} ${monthNames[currentMonth]} ${currentYear}` === selectedFullDate 
-                          ? 'bg-north-star-blue text-white' 
-                          : 'bg-gray-100 text-gray-700'
-                  ]"
-                  @click="selectDate(day)"
+                  class="border border-titanium-white text-center rounded-lg bg-gray-100 text-gray-700 cursor-pointer hover:bg-north-star-blue hover:text-white"
+                  :class="{'bg-north-star-blue text-white' : `${day} ${monthNames[currentMonth]} ${currentYear}` === selectedFullDate, 'text-[#E5E5E5] !cursor-not-allowed  hover:!bg-gray-100 hover:!text-[#E5E5E5]'  : isBeforeToday(`${currentYear}`, `${currentMonth}`, `${day}`) }"
+                  @click="!isBeforeToday(currentYear, currentMonth, day) && selectDate(day)"
               >
                   <div class="w-[146px] h-[170px] flex flex-col justify-center items-center">
                       <div class="text-[28px] font-medium" x-text="getDayName(day)"></div>
@@ -66,7 +62,20 @@
             </template>
           </div>
       </div>
-      
+      <div class="border-b border-gainsboro pb-[30px]">
+          <div class="flex items-center gap-5 flex-wrap justify-center">
+              {{-- <div class="p-2.5 bg-white-smoke text-blue-blue rounded-lg space-y-3 cursor-not-allowed opacity-[.5]">
+                  <img src="{{asset('assets/image1.jpeg')}}" class="object-cover w-[342px] h-[255px] rounded-lg" alt="">
+                  <h2 class="text-2xl font-semibold text-center">Lapangan 1</h2>
+              </div> --}}
+              @foreach ($lapangan as $item)
+                  <div class="p-2.5  border border-[#D9D9D9] hover:bg-north-star-blue hover:text-white rounded-lg space-y-3 cursor-pointer {{$item->id == $lapanganId ? 'text-white bg-north-star-blue' : 'text-blue-blue'}}" wire:click="selectedLapangan({{$item->id}}, {{$item->harga}}, '{{$item->nama_lapangan}}')">
+                      <img src="{{asset($item->foto)}}" class="object-cover w-[342px] h-[255px] rounded-lg" alt="">
+                      <h2 class="text-2xl font-semibold text-center">{{$item->nama_lapangan}}</h2>
+                  </div>
+              @endforeach
+          </div>
+      </div>
       <div class="space-y-8 border-b border-gainsboro pb-[30px]">
           <div class="flex gap-3 items-center text-[28px] justify-center">
               <svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -98,54 +107,45 @@
           </div>
       </div>
 
-      <div class="border-b border-gainsboro pb-[30px]">
-          <div class="flex items-center gap-5 flex-wrap justify-center">
-              {{-- <div class="p-2.5 bg-white-smoke text-blue-blue rounded-lg space-y-3 cursor-not-allowed opacity-[.5]">
-                  <img src="{{asset('assets/image1.jpeg')}}" class="object-cover w-[342px] h-[255px] rounded-lg" alt="">
-                  <h2 class="text-2xl font-semibold text-center">Lapangan 1</h2>
-              </div> --}}
-              @foreach ($lapangan as $item)
-                  <div class="p-2.5  border border-[#D9D9D9] hover:bg-north-star-blue hover:text-white rounded-lg space-y-3 cursor-pointer {{$item->id == $lapanganId ? 'text-white bg-north-star-blue' : 'text-blue-blue'}}" wire:click="selectedLapangan({{$item->id}}, {{$item->harga}}, '{{$item->nama_lapangan}}')">
-                      <img src="{{asset($item->foto)}}" class="object-cover w-[342px] h-[255px] rounded-lg" alt="">
-                      <h2 class="text-2xl font-semibold text-center">{{$item->nama_lapangan}}</h2>
-                  </div>
-              @endforeach
-          </div>
-      </div>
+
 
       <div class="space-y-8">
-          <h2 class="text-north-star-blue text-4xl font-semibold">Details</h2>
+          <h2 class="text-north-star-blue text-3xl font-semibold">Details</h2>
 
           <div class="space-y-3">
-              <div class="font-bold text-[28px]">Lokasi</div>
+              <div class="font-bold text-2xl">Lokasi</div>
               <div class="flex gap-2.5">
                   <svg width="22" height="27" viewBox="0 0 22 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M21 11.2273C21 19.1818 11 26 11 26C11 26 1 19.1818 1 11.2273C1 8.51483 2.05357 5.91348 3.92893 3.9955C5.8043 2.07751 8.34784 1 11 1C13.6522 1 16.1957 2.07751 18.0711 3.9955C19.9464 5.91348 21 8.51483 21 11.2273Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       <path d="M10.9999 14.6363C12.8408 14.6363 14.3332 13.11 14.3332 11.2272C14.3332 9.34442 12.8408 7.81812 10.9999 7.81812C9.15892 7.81812 7.66653 9.34442 7.66653 11.2272C7.66653 13.11 9.15892 14.6363 10.9999 14.6363Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>  
-                  <div class="font-light text-xl">{{$user->alamat}}, {{$user->kecamatan}}, {{$user->kota}}</div>                      
+                  <div class="font-light text-lg">{{$user->alamat}}, {{$user->kecamatan}}, {{$user->kota}}</div>                      
               </div>
           </div>
 
           <div class="space-y-3">
-              <div class="font-bold text-[28px]">Kontak</div>
+              <div class="font-bold text-2xl">Kontak</div>
               <div class="flex gap-2.5">
                   <svg width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M25.9992 18.9686V22.5816C26.0006 22.917 25.9289 23.249 25.7887 23.5563C25.6484 23.8636 25.4428 24.1395 25.1848 24.3662C24.9268 24.593 24.6223 24.7656 24.2907 24.873C23.959 24.9805 23.6076 25.0204 23.259 24.9902C19.391 24.5875 15.6755 23.3212 12.4111 21.293C9.37402 19.4439 6.79908 16.9769 4.86917 14.067C2.74483 10.9252 1.4228 7.34809 1.0102 3.62554C0.978791 3.29251 1.0201 2.95685 1.1315 2.63995C1.2429 2.32305 1.42196 2.03185 1.65726 1.78488C1.89256 1.53791 2.17896 1.34059 2.49822 1.20548C2.81748 1.07037 3.1626 1.00043 3.51162 1.00012H7.2826C7.89262 0.994364 8.48402 1.20133 8.94656 1.58245C9.40909 1.96356 9.71121 2.49281 9.79658 3.07155C9.95575 4.22778 10.2509 5.36305 10.6765 6.4557C10.8456 6.88675 10.8822 7.35522 10.7819 7.8056C10.6817 8.25597 10.4488 8.66938 10.1108 8.99682L8.51445 10.5263C10.3039 13.5414 12.9095 16.0378 16.0564 17.7522L17.6528 16.2228C17.9946 15.899 18.426 15.6758 18.8961 15.5798C19.3662 15.4837 19.8551 15.5188 20.305 15.6808C21.4455 16.0885 22.6304 16.3713 23.8372 16.5238C24.4478 16.6064 25.0054 16.901 25.4041 17.3518C25.8027 17.8026 26.0145 18.378 25.9992 18.9686Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
-                  <div class="font-light text-xl">{{$user->no_hp}}</div>                      
+                  <div class="font-light text-lg">{{$user->no_hp}}</div>                      
               </div>
           </div>
 
           <div class="space-y-3">
               <div class="flex justify-between items-center">
                   <h2 class="text-2xl font-medium">Harga Total</h2>
-                  <h3 class="text-north-star-blue text-[32px] font-bold">Rp {{number_format($totalHarga ?? 0)}}</h3>
+                  @if ($isDisabled)
+                    <h3 class="text-north-star-blue text-2xl font-bold">Rp 0</h3>
+                  @else
+                    <h3 class="text-north-star-blue text-2xl font-bold">Rp {{number_format($totalHarga ?? 0)}}</h3>
+                  @endif
               </div>
               @auth
-                <button wire:click="submitBooking" class="bg-north-star-blue text-white py-5 w-full rounded-lg text-[28px] font-bold block text-center">Booking Sekarang</button>
+                <button wire:click="submitBooking" class="text-white py-2 w-full rounded-lg text-xl font-bold block text-center {{$isDisabled ? 'cursor-not-allowed bg-gray-300' : 'bg-north-star-blue cursor-pointer'}}" @disabled($isDisabled)>Booking Sekarang</button>
               @else
-                <a href="{{route('login')}}" class="bg-north-star-blue text-white py-5 w-full rounded-lg text-[28px] font-bold block text-center">Booking Sekarang</a>
+                <a href="{{route('login')}}" class="bg-north-star-blue text-white py-2 w-full rounded-lg text-xl font-bold block text-center {{$isDisabled ? 'cursor-not-allowed' : 'cursor-pointer'}}">Booking Sekarang</a>
               @endauth
           </div>
       </div>
@@ -204,7 +204,16 @@
         this.month = this.monthNames[this.currentMonth];
         this.selectedFullDate = `${day} ${this.month} ${this.currentYear}`;
         Livewire.dispatch('selected-date', { tanggal: `${this.currentYear}-${this.currentMonth+1}-${day}`, tanggalLengkap: this.selectedFullDate })
+      },
+
+      isBeforeToday(year, month, day) {
+        const compareDate = new Date(year, month, day);
+        compareDate.setHours(0, 0, 0, 0);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        return compareDate < today;
       }
+
     };
   }
 </script>
