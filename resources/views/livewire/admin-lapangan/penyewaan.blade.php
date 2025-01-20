@@ -26,16 +26,16 @@
                     <tbody class="text-gray-700">
                         @foreach ($penyewaan as $item)
                             <tr>
-                                <td class="text-left py-3 px-4">{{$item->user->nama}}</td>
-                                <td class="text-left py-3 px-4">{{$item->lapangan->nama_lapangan}}</td>
-                                <td class="text-left py-3 px-4">{{$item->tanggal_main}}</td>
-                                <td class="text-left py-3 px-4">{{$item->waktu_main}}</td>
-                                <td class="text-left py-3 px-4">{{$item->metode_pembayaran}}</td>
-                                <td class="text-left py-3 px-4">{{$item->no_pembayaran}}</td>
-                                <td class="text-left py-3 px-4">{{$item->status}}</td>
-                                <td class="text-left py-3 px-4 uppercase">{{$item->tipe_pembayaran}}</td>
-                                <td class="text-left py-3 px-4">{{$item->harga_full}}</td>
-                                <td class="text-left py-3 px-4">{{$item->harga_bayar}}</td>
+                                <td class="text-left py-3 px-4">{{$item->user?->nama ?? ''}}</td>
+                                <td class="text-left py-3 px-4">{{$item->lapangan?->nama_lapangan ?? ''}}</td>
+                                <td class="text-left py-3 px-4">{{$item->tanggal_main ?? ''}}</td>
+                                <td class="text-left py-3 px-4">{{$item->waktu_main ?? ''}}</td>
+                                <td class="text-left py-3 px-4">{{$item->metode_pembayaran ?? ''}}</td>
+                                <td class="text-left py-3 px-4">{{$item->no_pembayaran ?? ''}}</td>
+                                <td class="text-left py-3 px-4">{{$item->status ?? ''}}</td>
+                                <td class="text-left py-3 px-4 uppercase">{{$item->tipe_pembayaran ?? ''}}</td>
+                                <td class="text-left py-3 px-4">{{$item->harga_full ?? ''}}</td>
+                                <td class="text-left py-3 px-4">{{$item->harga_bayar ?? ''}}</td>
                             </tr>
                         @endforeach
                     </tbody>
