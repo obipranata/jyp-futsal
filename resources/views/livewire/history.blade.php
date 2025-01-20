@@ -55,7 +55,7 @@
                 </div>
                 <div class="px-5 py-7 flex justify-between border-b border-[#D9D9D9]">
                     <div class="flex items-center gap-6">
-                        <img src="{{asset($item->lapangan->foto)}}" class="object-cover w-[219px] h-[130px] rounded-lg" alt="">
+                        <img src="{{Storage::url($item->lapangan->foto)}}" class="object-cover w-[219px] h-[130px] rounded-lg" alt="">
                         <div>
                             <h2 class="text-2xl font-semibold">{{$item->lapangan->user->nama}}</h2>
                             <div class="mt-2.5 text-fiftieth-shade text-base">{{$item->lapangan->nama_lapangan}}</div>

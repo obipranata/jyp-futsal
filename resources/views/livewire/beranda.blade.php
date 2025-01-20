@@ -39,7 +39,7 @@
             @foreach ($dataLapangan as $item)
                 @include('livewire.partials._card-booking', [
                     'userId' => $item->user_id,
-                    'image' => asset($item->foto), 
+                    'image' => Storage::url($item->foto), 
                     'title' => $item->user?->nama, 
                     'address' => $item->user?->alamat.', '.$item->user?->kecamatan.', '.$item->user?->kota, 
                     'price' => 'Rp '.number_format($item->harga), 

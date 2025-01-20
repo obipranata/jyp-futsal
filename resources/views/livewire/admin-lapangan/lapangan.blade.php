@@ -28,7 +28,7 @@
                                     <td class="text-center py-3 px-4">{{$item->nama_lapangan}}</td>
                                     <td class="text-center py-3 px-4">Rp. {{number_format($item->harga)}}</td>
                                     <td class="text-center py-3 px-4">
-                                        <img src="{{asset($item->foto)}}" class="max-w-[200px] rounded-lg mx-auto">
+                                        <img src="{{Storage::url($item->foto)}}" class="max-w-[200px] rounded-lg mx-auto">
                                     </td>
                                     <td class="text-center py-3 px-4">
                                         <div class="flex gap-2 justify-center">

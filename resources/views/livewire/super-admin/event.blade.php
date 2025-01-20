@@ -32,7 +32,7 @@
                                     <td class="text-center py-3 px-4">{{$item->lokasi}}</td>
                                     <td class="text-center py-3 px-4">{{number_format($item->htm)}}</td>
                                     <td class="text-center py-3 px-4">
-                                        <img src="{{asset($item->poster)}}" class="max-w-[200px] rounded-lg mx-auto">
+                                        <img src="{{Storage::url($item->poster)}}" class="max-w-[200px] rounded-lg mx-auto">
                                     </td>
                                     <td class="text-center py-3 px-4">
                                         <div class="flex gap-2 justify-center">

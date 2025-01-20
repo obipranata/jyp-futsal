@@ -26,7 +26,7 @@
                             <tr>
                                 <td class="flex justify-center items-center text-center py-3 px-4">
                                     @if (isset($item->foto))
-                                        <img src="{{asset($item->foto)}}" class="w-[80px]">
+                                        <img src="{{Storage::url($item->foto)}}" class="w-[80px]">
                                     @else
                                         -
                                     @endif
