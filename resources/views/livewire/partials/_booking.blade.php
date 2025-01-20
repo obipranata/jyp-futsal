@@ -70,7 +70,7 @@
               </div> --}}
               @foreach ($lapangan as $item)
                   <div class="p-2.5  border border-[#D9D9D9] hover:bg-north-star-blue hover:text-white rounded-lg space-y-3 cursor-pointer {{$item->id == $lapanganId ? 'text-white bg-north-star-blue' : 'text-blue-blue'}}" wire:click="selectedLapangan({{$item->id}}, {{$item->harga}}, '{{$item->nama_lapangan}}')">
-                      <img src="{{asset($item->foto)}}" class="object-cover w-[342px] h-[255px] rounded-lg" alt="">
+                      <img src="{{Storage::url($item->foto)}}" class="object-cover w-[342px] h-[255px] rounded-lg" alt="">
                       <h2 class="text-2xl font-semibold text-center">{{$item->nama_lapangan}}</h2>
                   </div>
               @endforeach
