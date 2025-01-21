@@ -35,7 +35,7 @@
                                 <td class="text-left py-3 px-4">{{$item->kecamatan}}</td>
                                 <td class="py-3 px-4 text-center">
                                     @if (isset($item->surat_izin_bangunan))
-                                        <a href="{{asset($item->surat_izin_bangunan)}}" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 py-2.5 text-center" target="_blank">Preview</a>
+                                        <a href="{{Storage::url($item->surat_izin_bangunan)}}" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 py-2.5 text-center" target="_blank">Preview</a>
                                     @else
                                         -
                                     @endif
