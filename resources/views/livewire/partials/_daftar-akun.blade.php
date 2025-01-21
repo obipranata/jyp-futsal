@@ -76,6 +76,11 @@
                 <div class="text-[#EA1C0F] pl-4 text-xs">@error('kota') {{ $message }} @enderror</div>
              </div>
          </div>
+         <div class="space-y-2">
+                <label for="map" class="text-north-star-blue text-sm pl-4 font-semibold">Link Embed Google Map <span class="text-[#EA1C0F]">*</span></label>
+                <textarea id="map" rows="4" class="block bg-[#F1F1F1] border-none text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full" placeholder="link embed google map..."></textarea>
+                <div class="text-[#EA1C0F] pl-4 text-xs">@error('map') {{ $message }} @enderror</div>
+         </div>
          <div class="pt-8 space-y-4">
              <button
                  type="submit"

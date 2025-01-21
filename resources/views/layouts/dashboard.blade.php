@@ -30,7 +30,7 @@
                             $active = 'font-bold text-north-star-blue';
                             $inactive = 'font-medium text-black-mana';
                         @endphp
-                        <a href="{{route('beranda')}}" class="{{$currentRoute === 'beranda' ?  $active : $inactive}} text-sm hover:text-north-star-blue w-[60px] text-center">Beranda</a>
+                        <a href="{{route('beranda')}}" class="{{$currentRoute === 'beranda' ?  $active : $inactive}} text-sm hover:font-bold hover:text-north-star-blue w-[60px] text-center">Beranda</a>
                         <a href="{{route('event')}}" class="{{$currentRoute === 'event' ?  $active : $inactive}} text-sm hover:text-north-star-blue hover:font-bold w-[60px] text-center">Event</a>
                         <a href="{{route('history')}}" class="{{$currentRoute === 'history' ?  $active : $inactive}} text-sm hover:text-north-star-blue hover:font-bold w-[60px] text-center">Riwayat</a>
                     </div>

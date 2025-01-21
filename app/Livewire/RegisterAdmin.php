@@ -20,6 +20,7 @@ class RegisterAdmin extends Component
     public $passwordConfirmation;
     public $logo;
     public $suratIzinBangunan;
+    public $map;
 
     protected function rules()
     {
@@ -29,6 +30,7 @@ class RegisterAdmin extends Component
             'alamat' => ['required'],
             'kecamatan' => ['required'],
             'kota' => ['required'],
+            'map' => ['required'],
             'logo' => ['nullable', 'image', 'max:1024'],
             'suratIzinBangunan' => ['required', 'image', 'max:1024'],
             'email' => ['required', 'email', 'unique:users,email'],
@@ -44,6 +46,7 @@ class RegisterAdmin extends Component
             'alamat.required' => 'Silahkan masukkan alamat anda',
             'kecamatan.required' => 'Silahkan masukkan kecamatan anda',
             'kota.required' => 'Silahkan masukkan kota anda',
+            'map.required' => 'Silahkan masukkan link embed google map',
             'logo.image' => 'File yang anda masukkan bukan gambar',
             'logo.max' => 'Ukuran file maksimal 1MB',
             'suratIzinBangunan.required' => 'Silahkan upload file surat izin bangunan',
@@ -72,6 +75,7 @@ class RegisterAdmin extends Component
             'level' => 'admin lapangan',
             'foto' => $this->logo ? $this->logo->store('logo', 'public') : null,
             'surat_izin_bangunan' => $this->suratIzinBangunan->store('surat_izin_bangunan', 'public'),
+            'map' => $this->map
         ]);
 
         $user->assignRole('admin-lapangan');

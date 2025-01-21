@@ -23,9 +23,9 @@
                     Masuk
                 </button>
                 <div class="flex justify-center">
-                    <a href="" class="text-[#858585] text-base font-medium">
+                    <button @click="openRegister = !openRegister" class="text-[#858585] text-base font-medium">
                         Belum Mempunyai Akun? <span class="text-north-star-blue">Daftar</span>
-                    </a>
+                    </button>
                 </div>
             </div>
         </form>
