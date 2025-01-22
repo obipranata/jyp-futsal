@@ -4,9 +4,11 @@ namespace App\Livewire\AdminLapangan;
 
 use App\Models\Lapangan;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class EditLapangan extends Component
 {
+    use WithFileUploads;
     public $lapangan;
     public string $namaLapangan = '';
     public $foto;
