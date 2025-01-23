@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Booking;
 
+use App\Enums\BankVirtualAccounts;
 use App\Models\Penyewaan;
 use Livewire\Component;
 
@@ -19,6 +20,16 @@ class KonfirmasiPembayaran extends Component
     public function redirectBeranda()
     {
         return redirect()->route('beranda');
+    }
+
+    public function bankVA($va): string
+    {
+        return match ($va) {
+            BankVirtualAccounts::MANDIRI->value => asset('assets/bank/mandiri.png'),
+            BankVirtualAccounts::BCA->value => asset('assets/bank/bca.png'),
+            BankVirtualAccounts::BRI->value => asset('assets/bank/bri.png'),
+            BankVirtualAccounts::BNI->value => asset('assets/bank/bni.png'),
+        };
     }
 
     public function render()

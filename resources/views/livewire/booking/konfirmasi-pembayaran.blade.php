@@ -17,19 +17,22 @@
                     <h1 class=" text-[#464646] uppercase">{{$penyewaan->metode_pembayaran   }}</h1>
                 </div>
                 <div class="">
-                    {{-- <img
-                        src="{{ asset('assets/bri-logo.png') }}"
+                    <img
+                        src="{{ $this->bankVa($penyewaan->metode_pembayaran) }}"
                         alt=""
                         class="w-16 object-center object-fill"
-                    > --}}
+                    >
                 </div>
             </div>
-            <div class="flex justify-between border-b border-[#D9D9D9] p-4 items-center" x-data>
+            <div class="flex justify-between border-b border-[#D9D9D9] p-4 items-center" x-data="{ textToCopy: @js($penyewaan->no_pembayaran) }">
                 <div class="space-y-2">
                     <h1 class="text-sm text-black-mana capitalize">Nomor Virtual Account</h1>
                     <h1 class="text-[#464646] uppercase">{{$penyewaan->no_pembayaran}}</h1>
                 </div>
-                <div class="border border-north-star-blue px-4 py-2.5 rounded-md text-north-star-blue hover:bg-olympian-blue hover:text-white cursor-pointer transition duration-100 ease-in">
+                <div 
+                    x-on:click="navigator.clipboard.writeText(textToCopy)"
+                    class="border border-north-star-blue px-4 py-2.5 rounded-md text-north-star-blue hover:bg-olympian-blue hover:text-white cursor-pointer transition duration-100 ease-in"
+                >
                     Salin Nomor VA
                 </div>
             </div>
