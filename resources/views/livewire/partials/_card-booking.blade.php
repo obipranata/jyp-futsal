@@ -1,4 +1,4 @@
-<div class="p-2.5 bg-white-smoke rounded-lg space-y-4">
+<div class="p-2.5 bg-white-smoke rounded-lg space-y-4 flex-1 flex flex-col min-w-[300px]">
   <img src="{{$image}}" class="object-cover w-[342px] h-[255px] rounded-lg" alt="">
   <div class="space-y-1 pl-2">
       <h2 class="text-xl font-semibold">{{$title}}</h2>

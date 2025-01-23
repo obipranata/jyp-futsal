@@ -35,7 +35,7 @@
         </div>
 
         {{-- card --}}
-        <div class="flex {{count($dataLapangan) > 3 ? 'justify-center': 'justify-start'}} items-center gap-5 flex-wrap">
+        <div class="flex {{count($dataLapangan) > 3 ? 'justify-center': 'justify-start'}} gap-5 flex-wrap items-stretch">
             @foreach ($dataLapangan as $item)
                 @include('livewire.partials._card-booking', [
                     'userId' => $item->user_id,
