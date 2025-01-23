@@ -1,8 +1,8 @@
 <div class="p-2.5 bg-white-smoke rounded-lg space-y-4 flex-1 flex flex-col min-w-[300px]">
   <img src="{{$image}}" class="object-cover w-[342px] h-[255px] rounded-lg" alt="">
-  <div class="space-y-1 pl-2">
+  <div class="space-y-1 pl-2 max-w-[342px] max-h-[255px]">
       <h2 class="text-xl font-semibold">{{$title}}</h2>
-      <div class="flex items-center gap-2.5 text-mithril-color text-[10px] max-w-[342px] max-h-[255px]">
+      <div class="flex items-center gap-2.5 text-mithril-color text-[10px]">
         <div class="w-[10px] h-[13px]">
             <svg width="10" height="13" viewBox="0 0 10 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 5.41056C9 8.841 5 11.7814 5 11.7814C5 11.7814 1 8.841 1 5.41056C1 4.24081 1.42143 3.11896 2.17157 2.29182C2.92172 1.46468 3.93913 1 5 1C6.06087 1 7.07828 1.46468 7.82843 2.29182C8.57857 3.11896 9 4.24081 9 5.41056Z" stroke="#878787" stroke-linecap="round" stroke-linejoin="round"/>
