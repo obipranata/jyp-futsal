@@ -1,4 +1,4 @@
-<div class="p-2.5 bg-white-smoke rounded-lg justify-between space-y-4 flex-1 flex flex-col min-w-[300px]">
+<div class="p-2.5 bg-white-smoke rounded-lg justify-between space-y-4 flex-1 flex flex-col min-w-[300px] max-w-[365px]">
     <div class="space-y-4">
         <img src="{{$image}}" class="object-cover w-[342px] h-[255px] rounded-lg" alt="">
         <div class="space-y-1 pl-2 max-w-[342px] max-h-[255px]">
