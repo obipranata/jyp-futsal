@@ -109,12 +109,12 @@
             </nav>
         </header>
     
-        <div class="w-full overflow-x-hidden flex flex-col">
+        <div class="w-full overflow-x-hidden h-full flex flex-col justify-between">
            
             {{$slot}}
     
-            <footer class="w-full bg-white text-right p-4">
-                Futsal 
+            <footer class="w-full bg-white text-center p-4">
+                Copyright 2025. All Right Reserverd 
             </footer>
         </div>
         
