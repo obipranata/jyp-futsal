@@ -57,8 +57,8 @@
                     <div class="flex items-center gap-6">
                         <img src="{{Storage::url($item->lapangan->foto)}}" class="object-cover w-[219px] h-[130px] rounded-lg" alt="">
                         <div>
-                            <h2 class="text-2xl font-semibold">{{$item->lapangan->user->nama}}</h2>
-                            <div class="mt-2.5 text-fiftieth-shade text-base">{{$item->lapangan->nama_lapangan}}</div>
+                            <h2 class="text-2xl font-semibold">{{$item->lapangan?->user?->nama ?? ''}}</h2>
+                            <div class="mt-2.5 text-fiftieth-shade text-base">{{$item->lapangan?->nama_lapangan ?? ''}}</div>
                             <div class="text-fiftieth-shade text-base">{{ \Illuminate\Support\Carbon::parse($item->tanggal_main)->format('d M Y')}}</div>
                             <div class="text-fiftieth-shade text-base">
                                 @foreach ($detailPenyewaan as $key => $detail)
