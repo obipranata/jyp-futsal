@@ -19,6 +19,11 @@ class DataTempatPenyewaan extends Component
         $user->update(['email_verified_at' => now()]);
         redirect()->route('super-admin.data-tempat-penyewaan');
     }
+    public function hapus($id)
+    {
+        User::find($id)->delete();
+        redirect()->route('super-admin.data-tempat-penyewaan');
+    }
 
     public function render()
     {

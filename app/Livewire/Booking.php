@@ -33,12 +33,14 @@ class Booking extends Component
 
     public bool $isSubmitBooking = false;
     public $isDisabled = true;
+    public $timeNow = null;
 
     public function mount($id): void
     {
         $this->user = User::with('lapangans')->find($id);
         $this->lapangan = $this->user->lapangans;
         $this->penyewa = Auth::user();
+        $this->timeNow = Carbon::now(); 
     }
 
     public function selectedTime($data): void

@@ -91,7 +91,7 @@
                   @php
                       $class = 'hover:bg-north-star-blue hover:text-white text-center cursor-pointer';
                       $disabled = false;
-                      if (in_array($time, $booked)) {
+                      if (in_array($time, $booked) || !$this->timeNow->lt($time)) {
                           $class = 'text-titanium-white text-center cursor-not-allowed';
                           $disabled = true;
                       }
