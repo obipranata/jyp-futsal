@@ -5,9 +5,9 @@
             @php
                 $active = 'text-white bg-north-star-blue'
             @endphp
-            <button class="{{$menu === 'semua' ? $active : 'text-[#858585]'}} font-medium text-xl hover:bg-north-star-blue hover:text-white py-4 px-10 rounded-lg" wire:click="navMenu('semua')">Semua</button>
-            <button class="{{$menu === 'PENDING' ? $active : 'text-[#858585]'}} font-medium text-xl hover:bg-north-star-blue hover:text-white py-4 px-10 rounded-lg" wire:click="navMenu('PENDING')">Menunggu Pembayaran</button>
-            <button class="{{$menu === 'PAID' ? $active : 'text-[#858585]'}} font-medium text-xl hover:bg-north-star-blue hover:text-white py-4 px-10 rounded-lg" wire:click="navMenu('PAID')">Selesai</button>   
+            <button class="{{$menu === 'semua' ? $active : 'text-[#858585]'}} font-medium text-xl hover:bg-north-star-blue hover:text-white py-4 px-5 rounded-lg" wire:click="navMenu('semua')">Semua</button>
+            <button class="{{$menu === 'PENDING' ? $active : 'text-[#858585]'}} font-medium text-xl hover:bg-north-star-blue hover:text-white py-4 px-5 rounded-lg" wire:click="navMenu('PENDING')">Menunggu Pembayaran</button>
+            <button class="{{$menu === 'PAID' ? $active : 'text-[#858585]'}} font-medium text-xl hover:bg-north-star-blue hover:text-white py-4 px-5 rounded-lg" wire:click="navMenu('PAID')">Selesai</button>   
         </div>
 
         @foreach ($penyewaan as $item)
@@ -55,10 +55,10 @@
                 </div>
                 <div class="px-5 py-7 flex justify-between border-b border-[#D9D9D9]">
                     <div class="flex items-center gap-6">
-                        <img src="{{Storage::url($item->lapangan->foto)}}" class="object-cover w-[219px] h-[130px] rounded-lg" alt="">
+                        <img src="{{Storage::url($item->foto)}}" class="object-cover w-[219px] h-[130px] rounded-lg" alt="">
                         <div>
-                            <h2 class="text-2xl font-semibold">{{$item->lapangan?->user?->nama ?? ''}}</h2>
-                            <div class="mt-2.5 text-fiftieth-shade text-base">{{$item->lapangan?->nama_lapangan ?? ''}}</div>
+                            <h2 class="text-2xl font-semibold">{{$item->user?->nama ?? ''}}</h2>
+                            <div class="mt-2.5 text-fiftieth-shade text-base">{{$item->nama_lapangan ?? ''}}</div>
                             <div class="text-fiftieth-shade text-base">{{ \Illuminate\Support\Carbon::parse($item->tanggal_main)->format('d M Y')}}</div>
                             <div class="text-fiftieth-shade text-base">
                                 @foreach ($detailPenyewaan as $key => $detail)
@@ -73,7 +73,7 @@
                 </div>
                 <div class="px-5 py-7 flex justify-between {{$item->status !== 'EXPIRED' && $item->status !== 'CANCEL' && !$item->rating ? ' border-b border-[#D9D9D9]' : ''}}">
                     <div class="text-fiftieth-shade text-base font-medium">Total Pembayaran</div>
-                    <div class="text-fiftieth-shade font-semibold text-lg">Rp {{number_format($item->harga_bayar)}}</div>
+                    <div class="text-fiftieth-shade font-semibold text-lg">Rp {{number_format($item->total_harga_bayar)}}</div>
                 </div>
                 @if ($item->status === 'PENDING')
                     <div class="px-5 py-7 flex items-center justify-between">

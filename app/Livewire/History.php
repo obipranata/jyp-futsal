@@ -40,10 +40,23 @@ class History extends Component
     {
         $user = Auth::user();
         if($this->menu === 'semua') {   
-            $this->penyewaan = Penyewaan::query()->where('user_id', $user->id ?? null)->groupBy('no_pembayaran')->get();
+            $this->penyewaan = Penyewaan::query()
+            ->selectRaw('penyewaans.*, SUM(penyewaans.harga_bayar) as total_harga_bayar, lapangans.*')
+            ->leftJoin('lapangans', 'penyewaans.lapangan_id', '=', 'lapangans.id')
+            ->where('penyewaans.user_id', $user->id ?? null)
+            ->groupBy('penyewaans.no_pembayaran') 
+            ->orderByRaw("penyewaans.status = 'PAID' DESC") 
+            ->get();
+
             $this->detailPenyewaan = Penyewaan::query()->where('user_id', $user->id ?? null)->get();
         } else {
-            $this->penyewaan = Penyewaan::query()->where('user_id', $user->id ?? null)->where('status', $this->menu)->groupBy('no_pembayaran')->get();
+            $this->penyewaan = Penyewaan::query()
+            ->selectRaw('penyewaans.*, SUM(penyewaans.harga_bayar) as total_harga_bayar, lapangans.*')
+            ->leftJoin('lapangans', 'penyewaans.lapangan_id', '=', 'lapangans.id')
+            ->where('penyewaans.user_id', $user->id ?? null)
+            ->where('penyewaans.status', $this->menu)
+            ->groupBy('penyewaans.no_pembayaran') 
+            ->get();
             $this->detailPenyewaan = Penyewaan::query()->where('user_id', $user->id ?? null)->where('status', $this->menu)->get();
         }
         return view('livewire.history');
