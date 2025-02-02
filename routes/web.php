@@ -27,7 +27,7 @@ Route::get('/booking-detail', [BookingDetailController::class, 'index'])->name('
 Route::get('/booking/informasi-pembayaran', [PembayaranController::class, 'informasiPembayaran'])->name('informasi-pembayaran');
 Route::get('/booking/{virtual_account}/konfirmasi-pembayaran', [PembayaranController::class, 'konfirmasiPembayaran'])->name('konfirmasi-pembayaran');
 
-Route::get('generate-pdf', [PDFController::class, 'generatePDF'])->name('laporan-pdf');
+Route::get('generate-pdf/{start?}/{end?}', [PDFController::class, 'generatePDF'])->name('laporan-pdf');
 
 Route::middleware([
     'auth:sanctum',
@@ -60,6 +60,7 @@ Route::middleware([
     Route::get('/event' , [SuperAdminController::class, 'event'])->name('event');
     Route::get('/tambah-event' , [SuperAdminController::class, 'tambahEvent'])->name('tambah-event');
     Route::get('/edit-event/{id}' , [SuperAdminController::class, 'editEvent'])->name('edit-event');
+    Route::get('/data-penyewa' , [SuperAdminController::class, 'dataPenyewa'])->name('data-penyewa');
     Route::get('/laporan' , [SuperAdminController::class, 'laporan'])->name('laporan');
 });
 

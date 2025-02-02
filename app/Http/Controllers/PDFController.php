@@ -8,20 +8,14 @@ use Illuminate\Http\Request;
 
 class PDFController extends Controller
 {
-    public function generatePDF()
+    public function generatePDF(Request $request)
     {
+        $start = $request->start ?? null;
+        $end = $request->end ?? null;
         $users = User::query()
             ->where('level', 'admin lapangan')->get();
-    
-        $data = [
-            'title' => 'Laporan Data Tempat Penyewaan',
-            'date' => date('m/d/Y'),
-            'users' => $users
-        ]; 
               
-        $pdf = PDF::loadView('pdf-laporan', ['data' => $users]);
+        $pdf = PDF::loadView('pdf-laporan', ['data' => $users, 'start' => $start, 'end' => $end]);
         return $pdf->setPaper('a3', 'landscape')->stream('pdf-laporan');
-       
-        // return $pdf->download('itsolutionstuff.pdf');
     }
 }

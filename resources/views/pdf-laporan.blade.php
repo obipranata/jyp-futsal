@@ -61,8 +61,8 @@
               <td>{{$item->kecamatan}}</td>
               <td>
                 @php
-                    $pendapatan = $item->lapangans->sum(function ($lapangan) {
-                        return $lapangan->penyewaan->sum('harga_bayar');
+                    $pendapatan = $item->lapangans->sum(function ($lapangan) use ($start, $end) {
+                        return $lapangan->penyewaan->where('status', 'PAID')->whereBetween('updated_at', [$start, $end])->sum('harga_bayar');
                     });
                 @endphp
                 Rp. {{number_format($pendapatan)}}

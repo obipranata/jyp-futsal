@@ -6,9 +6,6 @@
     <title>Super Admin</title>
     <meta name="author" content="David Grzyb">
     <meta name="description" content="">
-
-    <!-- Tailwind -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
         .font-family-karla { font-family: karla; }
@@ -43,6 +40,10 @@
             <a href="{{route('super-admin.event')}}" class="flex items-center {{Route::currentRouteName() === 'super-admin.event' ? 'active-nav-link' : ''}} text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-align-left mr-3"></i>
                 Event
+            </a>
+            <a href="{{route('super-admin.data-penyewa')}}" class="flex items-center {{Route::currentRouteName() === 'super-admin.data-penyewa' ? 'active-nav-link' : ''}} text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-align-left mr-3"></i>
+                Data Penyewa
             </a>
             <a href="{{route('super-admin.laporan')}}" class="flex items-center {{Route::currentRouteName() === 'super-admin.laporan' ? 'active-nav-link' : ''}} text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-tablet-alt mr-3"></i>
@@ -93,6 +94,10 @@
                 <a href="{{route('super-admin.event')}}" class="flex items-center {{Route::currentRouteName() === 'super-admin.event' ? 'active-nav-link' : ''}} text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-align-left mr-3"></i>
                     Event
+                </a>
+                <a href="{{route('super-admin.data-penyewa')}}" class="flex items-center {{Route::currentRouteName() === 'super-admin.data-penyewa' ? 'active-nav-link' : ''}} text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fas fa-align-left mr-3"></i>
+                    Data Penyewa
                 </a>
                 <a href="{{route('super-admin.laporan')}}" class="flex items-center {{Route::currentRouteName() === 'super-admin.event' ? 'active-nav-link' : ''}} text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-tablet-alt mr-3"></i>

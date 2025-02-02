@@ -30,4 +30,9 @@ class SuperAdminController extends Controller
     {
         return view('super-admin.laporan');
     }
+
+    public function dataPenyewa()
+    {
+        return view('super-admin.data-penyewa');
+    }
 }
