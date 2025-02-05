@@ -11,18 +11,6 @@
                   <h1 class="text-xl text-olympian-blue font-bold">Rp {{number_format($totalHarga)}}</h1>
               </div>
 
-              <div class="space-y-2 flex-1">
-                <label for="metodePembayaran" class="text-north-star-blue text-sm pl-4 font-semibold w-full">Jumlah Bayar</label>
-                <select
-                    wire:model.lazy="kategoriPembayaran"
-                    class="w-full bg-[#F1F1F1] border-none text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 h-[50px]"
-                    name="metodePembayaran"
-                    id="distrit">
-                    <option value="full">Bayar Full</option>
-                    <option value="dp">Bayar DP (min Rp.50.000)</option>
-                </select>
-            </div>
-
               {{-- Medote Pembayaran --}}
               <div class="space-y-2 flex-1">
                   <label for="virtualAccount" class="text-north-star-blue text-sm pl-4 font-semibold w-full">Pilih Metode Pembayaran</label>

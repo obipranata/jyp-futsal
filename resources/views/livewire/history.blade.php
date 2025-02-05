@@ -61,15 +61,23 @@
                             <div class="mt-2.5 text-fiftieth-shade text-base">{{$item->nama_lapangan ?? ''}}</div>
                             <div class="text-fiftieth-shade text-base">{{ \Illuminate\Support\Carbon::parse($item->tanggal_main)->format('d M Y')}}</div>
                             <div class="text-fiftieth-shade text-base">
+                                @php
+                                    $totalJam = 0;
+                                @endphp
                                 @foreach ($detailPenyewaan as $key => $detail)
                                     @if ($detail->no_pembayaran === $item->no_pembayaran)
+                                        @php
+                                            $totalJam += 1;
+                                        @endphp
                                         {{$detail->waktu_main}} 
                                     @endif
                                 @endforeach
                             </div>
                         </div>
                     </div>
-                    <div class="text-fiftieth-shade font-semibold text-lg">Rp {{number_format($item->harga_full)}}</div>
+                    <div class="text-fiftieth-shade font-semibold text-lg">
+                        Rp {{number_format($item->harga_full)}} x {{$totalJam}}
+                    </div>
                 </div>
                 <div class="px-5 py-7 flex justify-between {{$item->status !== 'EXPIRED' && $item->status !== 'CANCEL' && !$item->rating ? ' border-b border-[#D9D9D9]' : ''}}">
                     <div class="text-fiftieth-shade text-base font-medium">Total Pembayaran</div>

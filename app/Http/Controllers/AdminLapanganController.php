@@ -35,4 +35,9 @@ class AdminLapanganController extends Controller
     {
         return view('admin-lapangan.edit-lapangan', ['id' => $id]);
     }
+
+    public function laporan()
+    {
+        return view('admin-lapangan.laporan');
+    }
 }

@@ -27,7 +27,13 @@ Route::get('/booking-detail', [BookingDetailController::class, 'index'])->name('
 Route::get('/booking/informasi-pembayaran', [PembayaranController::class, 'informasiPembayaran'])->name('informasi-pembayaran');
 Route::get('/booking/{virtual_account}/konfirmasi-pembayaran', [PembayaranController::class, 'konfirmasiPembayaran'])->name('konfirmasi-pembayaran');
 
-Route::get('generate-pdf/{start?}/{end?}', [PDFController::class, 'generatePDF'])->name('laporan-pdf');
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+    'role:super-admin|admin-lapangan',
+])
+->get('generate-pdf/{start?}/{end?}', [PDFController::class, 'generatePDF'])->name('laporan-pdf');
 
 Route::middleware([
     'auth:sanctum',
@@ -80,4 +86,5 @@ Route::middleware([
 
     Route::get('/tambah-lapangan' , [AdminLapanganController::class, 'tambahLapangan'])->name('tambah-lapangan');
     Route::get('/edit-lapangan/{id}' , [AdminLapanganController::class, 'editLapangan'])->name('edit-lapangan');
+    Route::get('/laporan' , [AdminLapanganController::class, 'laporan'])->name('laporan');
 });
